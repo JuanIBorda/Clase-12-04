@@ -1,0 +1,58 @@
+@startuml
+
+class Persona{
+    String nombre;
+    String apellido;
+    String Direccion;
+    int edad;
+    char sexo;
+    int disponible;
+
+    +void comenzar()
+    + void desactivarNotificaciones()
+    + void activarNotificaciones()
+}
+
+class Cuidador extends TipoDeUsuario{
+}
+
+class Traunseunte extends TipoDeUsuario{
+}
+
+class Viaje{
+int tiempoEstimado;
+Alerta tipoDeAlerta;
++void reportarIncidente();
+}
+
+interface Alerta {
++ reportarIncidente()
+}
+
+class AlertaCuidadores implements Alerta{
++ reportarIncidente()
+}
+class AlertaPolicial implements Alerta{
++ reportarIncidente()
+}
+class AlertaTranseunte implements Alerta{
++ reportarIncidente()
+}
+class AlertaFalsaAlarmaAlerta implements Alerta{
++ reportarIncidente()
+}
+
+abstract class Estado{}
+
+class EnViaje extends Estado{}
+
+class Disponible extends Estado{}
+
+class Crontask {}
+
+Persona--> Estado
+Crontask --> Viaje
+
+Viaje --> Persona
+Persona --> Viaje
+@enduml
